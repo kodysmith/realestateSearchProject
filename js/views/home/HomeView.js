@@ -18,12 +18,12 @@ define([
     render: function(){
         // display home template to the defined element "el"
         this.$el.html(homeTemplate);   
-        
+        console.log('render home');
         // display the search form on the home screen
         // demonstrating how you can pass element selector or other values to models to manipulate their
         // result destination 
-        var SearchFormView = new SearchFormView({el:$('#searchFormHolder')});
-        SearchFormView.render();
+        var searchFormView = new SearchFormView({el:$('#searchFormHolder')});
+        searchFormView.render();
     }
   });
 

@@ -7,7 +7,7 @@
   display:block;
 }
 @media(min-width: 700px){
-  form#movieSearchForm {
+  form#SearchForm {
     float: left;
     left: 37%;
     position: relative;
@@ -17,7 +17,7 @@
 }
 @media(max-width: 699px){
   
-  form#movieSearchForm {
+  form#SearchForm {
     float: left;
     left: 2%;
     position: relative;

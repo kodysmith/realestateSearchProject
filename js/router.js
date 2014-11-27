@@ -58,8 +58,8 @@ define([
     headerView.render();
     
     // the purpose of this app is to Search for movies, so this should display always
-    var SearchFormView = new SearchFormView();
-    SearchFormView.render();
+    var searchFormView = new SearchFormView();
+    searchFormView.render();
 
     // display the footer at all times
     var footerView = new FooterView();    

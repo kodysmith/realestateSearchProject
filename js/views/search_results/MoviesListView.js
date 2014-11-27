@@ -1,6 +1,6 @@
 /**
- * Movie List View processes data from MovieCollection to display to the user in list form
- * source data: MovieCollection
+ * Movie List View processes data from PropertyCollection to display to the user in list form
+ * source data: PropertyCollection
  * template: searchResultsListTemplate.html
  */
 
@@ -8,22 +8,22 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'models/MovieModel',
-  'collections/MovieCollection',
-  'views/search_forms/MovieSearchFormView',
+  'models/PropertyModel',
+  'collections/PropertyCollection',
+  'views/search_forms/SearchFormView',
   'text!templates/search_results/searchResultsListTemplate.html'
-], function($, _, Backbone, MovieModel, MovieCollection, MovieSearchFormView, searchResultsListTemplate){
+], function($, _, Backbone, PropertyModel, PropertyCollection, SearchFormView, searchResultsListTemplate){
 
   var MoviesListView = Backbone.View.extend({
     el: $("#searchResults"),
-    model: MovieModel,
+    model: PropertyModel,
     render: function(searchString){
         
       // display Something while searching is in progress so the user is aware of action
       this.$el.html('<div class="searchLoader">Searching...</div>');
       
       // instantiate a new movie collection class to get search results
-      var movies = new MovieCollection();
+      var movies = new PropertyCollection();
       
       // fetch the data from the source using the search string populated by the search form
       movies.fetch({

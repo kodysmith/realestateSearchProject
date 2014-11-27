@@ -17,8 +17,8 @@ define([
   'views/home/HomeView',
   'views/search_results/MoviesListView',
   'views/search_results/MoviesGridView',
-  'views/search_forms/MovieSearchFormView',
-], function($, _, Backbone, HeaderView, FooterView, HomeView, MoviesListView, MoviesGridView, MovieSearchFormView) {
+  'views/search_forms/SearchFormView',
+], function($, _, Backbone, HeaderView, FooterView, HomeView, MoviesListView, MoviesGridView, SearchFormView) {
   
   var AppRouter = Backbone.Router.extend({
     routes: {
@@ -58,8 +58,8 @@ define([
     headerView.render();
     
     // the purpose of this app is to Search for movies, so this should display always
-    var movieSearchFormView = new MovieSearchFormView();
-    movieSearchFormView.render();
+    var SearchFormView = new SearchFormView();
+    SearchFormView.render();
 
     // display the footer at all times
     var footerView = new FooterView();    

@@ -1,6 +1,6 @@
 /**
- * Movie Grid View processes data from MovieCollection to display to the user in Grid form
- * source data: MovieCollection
+ * Movie Grid View processes data from PropertyCollection to display to the user in Grid form
+ * source data: PropertyCollection
  * template: searchResultsGridTemplate.html
  */
 
@@ -8,20 +8,20 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'models/MovieModel',
-  'collections/MovieCollection',
+  'models/PropertyModel',
+  'collections/PropertyCollection',
   'text!templates/search_results/searchResultsGridTemplate.html'
-], function($, _, Backbone, MovieModel, MovieCollection, searchResultsGridTemplate){
+], function($, _, Backbone, PropertyModel, PropertyCollection, searchResultsGridTemplate){
 
   var MoviesGridView = Backbone.View.extend({
     el: $("#searchResults"),
-    model: MovieModel,
+    model: PropertyModel,
     render: function(searchString){
       // display Something while searching is in progress so the user is aware of action
       this.$el.html('<div class="searchLoader">Searching...</div>');
       
       // instantiate a new movie collection class to get search results
-      var movies = new MovieCollection();
+      var movies = new PropertyCollection();
       
       // fetch the data from the source using the search string populated by the search form
       movies.fetch({

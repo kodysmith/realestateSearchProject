@@ -1,20 +1,20 @@
 /**
  * Movie Search Form View displays the search form and process the interactions by the user
- * template: movieSearchFormTemplate.html
+ * template: searchFormTemplate.html
  */
 
 define([
   'jquery',
   'underscore',
   'backbone',
-  'text!templates/search_forms/movieSearchFormTemplate.html'
-], function($, _, Backbone, movieSearchFormTemplate){
+  'text!templates/search_forms/searchFormTemplate.html'
+], function($, _, Backbone, searchFormTemplate){
 
-  var MovieSearchFormView = Backbone.View.extend({
+  var SearchFormView = Backbone.View.extend({
     el: $("#searchFormHolder"),
     render: function(){
       // display the form using the form template
-      this.$el.html(movieSearchFormTemplate);
+      this.$el.html(searchFormTemplate);
       
       // setup appropriate interactions, and override default actions
       $('#movieSearchForm').submit(
@@ -31,5 +31,5 @@ define([
       });
     }
   });
-  return MovieSearchFormView;
+  return SearchFormView;
 });

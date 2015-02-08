@@ -14,11 +14,9 @@ define([
   'backbone',
   'views/home/HeaderView',
   'views/home/FooterView',
+  'views/search_results/ResultsGridView',
   'views/home/HomeView',
-  'views/search_results/MoviesListView',
-  'views/search_results/MoviesGridView',
-  'views/search_forms/SearchFormView',
-], function($, _, Backbone, HeaderView, FooterView, HomeView, MoviesListView, MoviesGridView, SearchFormView) {
+], function($, _, Backbone, HeaderView, FooterView, ResultsGridView, HomeView) {
   
   var AppRouter = Backbone.Router.extend({
     routes: {
@@ -26,8 +24,8 @@ define([
       "": "index",  // index with no slash
       "/": "index", // index with one trailing slash
       "/#":"index", // index with a hash 
-      "movies/list/:searchString":"moviesList",  // display movies search list view using "searchString"
-      "movies/grid/:searchString":"moviesGrid",  // display movies search grid view using "searchString"
+      "properties/list/:searchString":"moviesList",  // display movies search list view using "searchString"
+      "properties/grid/:searchString":"propertiesGrid",  // display movies search grid view using "searchString"
       "*actions": "defaultRoute" // Backbone will try match the route above first
     },
     // index function displays the default home screen 
@@ -35,15 +33,9 @@ define([
       var homeView = new HomeView();
       homeView.render();
     },
-    // moviesList function displays and processes search results based on URL "searchString"
-    moviesList: function(searchString){
-      var moviesListView = new MoviesListView();
-      moviesListView.render(searchString);
-    },
-    // moviesGrid function displays and processes search results based on URL "searchString"
-    moviesGrid: function(searchString){
-      var moviesGridView = new MoviesGridView();
-      moviesGridView.render(searchString);
+    propertiesGrid: function(){
+      var resultsView = new ResultsGridView();
+      resultsView.render();
     }
     
   });
@@ -56,10 +48,6 @@ define([
     // display the header at all times
     var headerView = new HeaderView();
     headerView.render();
-    
-    // the purpose of this app is to Search for movies, so this should display always
-    var searchFormView = new SearchFormView();
-    searchFormView.render();
 
     // display the footer at all times
     var footerView = new FooterView();    

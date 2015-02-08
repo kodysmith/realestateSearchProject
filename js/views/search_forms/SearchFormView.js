@@ -17,17 +17,17 @@ define([
       this.$el.html(searchFormTemplate);
       
       // setup appropriate interactions, and override default actions
-      $('#movieSearchForm').submit(
+      $('#searchForm').submit(
         function(e){
             e.preventDefault();
             var viewStyle = $('form select[name^=viewStyle]').val();
             var searchString = $('form input[name^=searchString]').val();
-            window.location.hash = 'movies/'+viewStyle + '/' + encodeURIComponent(searchString);
+            window.location.hash = 'properties/'+viewStyle + '/' + encodeURIComponent(searchString);
         });
-      $('#movieSearchForm select').change(function(){
+      $('#searchForm select').change(function(){
             var viewStyle = $('form select[name^=viewStyle]').val();
             var searchString = $('form input[name^=searchString]').val();
-            window.location.hash = 'movies/'+viewStyle + '/' + encodeURIComponent(searchString);
+            window.location.hash = 'properties/'+viewStyle + '/' + encodeURIComponent(searchString);
       });
     }
   });

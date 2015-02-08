@@ -23,19 +23,25 @@ define([
       this.$el.html('<div class="searchLoader">Searching...</div>');
       
       // instantiate a new movie collection class to get search results
-      var movies = new PropertyCollection();
+      var propertiesCollection = new PropertyCollection();
       
       // fetch the data from the source using the search string populated by the search form
-      movies.fetch({
+      propertiesCollection.fetch({
         reset: true,
-        query: searchString
+        query: searchString,
+        success: function(results){
+          debugger
+        },
+        error: function(results){
+          debugger
+        }
       });
       
       // clear the existing results for a new search, and then display the results using the movie model
-      movies.bind('reset', function () { 
-        movieData = movies.models; 
+      propertiesCollection.bind('reset', function () { 
+        propertiesData = properties.models; 
         var data = {
-                      results: movies.models,
+                      results: properties.models,
                       _: _ 
                     };
         // compile the view using the search results template, and the search result data returned

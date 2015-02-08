@@ -24,20 +24,25 @@ define([
 				
 				//http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=<ZWSID>&address=2114+Bigelow+Ave&citystatezip=Seattle%2C+WA
                 
-				url: testDataXML, 
-				sync: function(method, collection, options){
-					this.url+=options.query;
-					options.dataType = 'xml';
-					return Backbone.sync(method,collection,options);
-				},
-				parse : function(response) {
-					$(response).find('result').each(function (index) {
-			            var address = $(this).find('name').text();
-			            parsed.push({title: bookTitle});
+				url: '/data/zillow.xml', 
+				parse: function (data) {
+        			var parsed = [];
+			        $(data).find('result').each(function (index) {
+			            var city = $(this).find('city').text();
+			            parsed.push({city: city});
 			        });
+			        debugger
 
-					return response['movies'];
-				},
+			        return parsed;
+			    },
+
+			    fetch: function (options) {
+			    	debugger
+			        options = options || {};
+			        options.dataType = "xml";
+			        return Backbone.Collection.prototype.fetch.call(this, options);
+			    },
+				
 				error : function(collection, response, options) {
 					error.log(response.statusText);
 				},
